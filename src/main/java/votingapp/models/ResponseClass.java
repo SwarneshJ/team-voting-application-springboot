@@ -1,4 +1,4 @@
-package votingapp;
+package votingapp.models;
 
 public class ResponseClass {
     private int statusCode;
