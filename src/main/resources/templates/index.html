@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <header>
+        <div class="container">
+            <div class="header">
+                <a style='color:white; font-size:50px'>Product Team</a>
+            </div>
+        </div>
+        <link th:href="@{/css/index-style.css}" rel="stylesheet" />
+    </header>
+    <head>
+        <meta charset="UTF-8">
+        <title>Product Team</title>
+    </head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+    <body>
+        <hr>
+        <div class="email">
+            <label for="email">Please enter your email here: </label>
+            <input type="text" id="email" th:id="email"><br><br>
+        </div>
+        <hr>
+
+        <div th:each="teamMember: ${teamMembers}"class = "imageBox">
+            <div>
+                <img th:src="${teamMember.imageUrl}"
+                    class="displayimages"
+                />
+            </div>
+            <div>
+                <p><h2 th:text="${teamMember.name}"></h2></p>
+                <p><h3 th:text="${teamMember.title}"></h3></p>
+                <p th:text="${teamMember.bio}"></p>
+                <b>Want to work with [[${teamMember.name}]] ?</b>
+                <a href=# th:id=${teamMember.memberId} th:name="myBtn">
+                    <button class='votebtn' th:id="'btn '+${teamMember.memberId}">Yes</button>
+                </a>
+                <p th:id="'txt '+${teamMember.memberId}">[[${teamMember.votes}]] people have said Yes!</p>
+            </div>
+            <hr>
+        </div>
+        <hr>
+    </body>
+</html>
